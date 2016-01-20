@@ -1,0 +1,28 @@
+<header class="header">
+  <h2>New Poll</h2>
+  <p>Use the form below to create a new poll.</p>
+</header>
+
+<main class="card card--light">
+  <form class="form" {{action "createPoll" model on="submit"}}>
+    <fieldset class="form-field">
+      <label class="form-label" for="question">Question</label>
+      {{input class="form-input" id="question" type="text" value=model.prompt}}
+    </fieldset>
+
+    {{#each model.options as |option|}}
+      <fieldset class="form-field">
+        <label class="form-label">Option</label>
+        {{input class="form-input" type="text" value=option.label}}
+      </fieldset>
+    {{/each}}
+
+    <button class="btn btn--primary btn--form">Submit!</button>
+  </form>
+</main>
+
+<footer class="footer">
+  <p class="footer-copyright">
+    <span class="footer-copyright-text">&copy; Woodland Wanderer Whatchamacallits</span>
+  </p>
+</footer>

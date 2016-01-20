@@ -1,0 +1,34 @@
+<main class="card card--light">
+  <h3 class="border">{{model.prompt}}</h3>
+  <div class="border">
+    <div class="grid group">
+
+      <div class="card-content grid-box grid-box--3of5">
+
+        <ul class="list list--answer list--answer--flush">
+          {{#each model.sortedOptions as |option|}}
+            <li class="list-item">
+              <span>{{option.label}}</span>
+            </li>
+          {{/each}}
+        </ul>
+
+      </div>
+
+      <div class="grid-box grid-box--2of5">
+
+        {{#each model.sortedOptions as |option|}}
+          <div class="progress">
+            <p class="progress-info">{{option-tally option=option poll=model}}</p>
+          </div>
+        {{/each}}
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="actions">
+    {{#link-to "polls.poll" class="btn btn--primary btn--back"}}Back{{/link-to}}
+  </div>
+</main>
