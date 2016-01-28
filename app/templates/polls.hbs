@@ -1,0 +1,19 @@
+<header class="header">
+  <h2>Welcome, Woodland Wanderers!</h2>
+  <p>Now that you've completed your training, here's a quick quiz to test your skills.</p>
+</header>
+
+{{outlet}}
+
+<footer class="footer">
+  <h4>Check Out Previous Quizzes from Woodland Wanderers:</h4>
+  <ul class="list list--space">
+    {{#each model as |poll|}}
+      <li class="list-item">{{#link-to "polls.poll" poll}}{{poll.prompt}}{{/link-to}}</li>
+    {{/each}}
+  </ul>
+
+  <p class="footer-copyright">
+    <span class="footer-copyright-text">&copy; Woodland Wanderer Whatchamacallits</span>
+  </p>
+</footer>

@@ -1,0 +1,36 @@
+<main class="card card--light">
+  <h3 class="border">{{model.poll.prompt}}</h3>
+  <div class="border">
+    <div class="grid group">
+
+      <div class="card-content grid-box grid-box--3of5">
+
+        <ul class="list list--answer">
+          {{#each model.poll.options as |option|}}
+            <li class="list-item">
+              <button class="list-item-checkbox {{if (eq model.option option) "is-selected"}}" {{action "toggleOption" model option}}>
+                <b class="srt">Select</b>
+              </button>
+              <span>{{option.label}}</span>
+            </li>
+          {{/each}}
+        </ul>
+
+      </div>
+
+      <div class="grid-box grid-box--2of5">
+        <img src="/assets/images/icon-flame.svg" alt="" class="icon" width="130">
+      </div>
+    </div>
+  </div>
+
+  <div class="grid group actions">
+    <div class="grid-box grid-box--3of4">
+      <button class="btn btn--primary btn--vote" {{action "castVote" model}}>Vote!</button>
+    </div>
+
+    <div class="grid-box grid-box--1of4 results">
+      {{#link-to "polls.poll.results" class="btn btn--secondary btn--results"}}Results{{/link-to}}
+    </div>
+  </div>
+</main>
