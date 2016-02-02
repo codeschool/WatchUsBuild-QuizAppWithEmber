@@ -1,24 +1,33 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('option-tally', 'Integration | Component | option tally', {
+moduleForComponent('option-tally', 'Integration | Component | option-tally', {
   integration: true
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
+test('properly displays with 0 votes', function(assert) {
+  this.set('myOption', { voteCount: 0 });
+  this.set('myPoll', { voteCount: 0 });
 
-  this.render(hbs`{{option-tally}}`);
+  this.render(hbs`{{option-tally option=myOption poll=myPoll}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), '0 votes (0%)');
+});
 
-  // Template block usage:"
-  this.render(hbs`
-    {{#option-tally}}
-      template block text
-    {{/option-tally}}
-  `);
+test('properly displays with all votes on the option', function(assert) {
+  this.set('myOption', { voteCount: 5 });
+  this.set('myPoll', { voteCount: 5 });
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.render(hbs`{{option-tally option=myOption poll=myPoll}}`);
+
+  assert.equal(this.$().text().trim(), '5 votes (100%)');
+});
+
+test('properly displays with partial votes on the option', function(assert) {
+  this.set('myOption', { voteCount: 1 });
+  this.set('myPoll', { voteCount: 3 });
+
+  this.render(hbs`{{option-tally option=myOption poll=myPoll}}`);
+
+  assert.equal(this.$().text().trim(), '1 votes (33%)');
 });

@@ -8,7 +8,9 @@
     "ember-qunit-notifications": "0.1.0",
     "jquery": "1.11.3",
     "loader.js": "^3.5.0",
-    "numeral": "~1.5.3"
+    "numeral": "~1.5.3",
+    "pretender": "~0.10.1",
+    "Faker": "~3.0.0"
   },
   "resolutions": {
     "ember": "2.2.0"
